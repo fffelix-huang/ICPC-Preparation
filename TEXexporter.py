@@ -43,14 +43,18 @@ if __name__ == '__main__':
 				add('\\section{{{name}}}'.format(name = file.capitalize()))
 				print('[Directory]', file, 'included')
 			else:
-				add(f'\\subsection{{{file}}}')
-				add('\\begin{code}')
+				pos = file.find('.')
+				fmt = file[pos + 1:]
+				add(f'\\subsection{{{file[: pos]}}}')
+				if fmt == 'h':
+					add('\\begin{code}')
 				with open(os.path.join(current_dir, file)) as r:
 					for s in r.readlines():
 						if len(s.strip()) > 0:
 							add(s.replace('\t', '    '), False)
 					# add(''.join([word.replace('\t', '    ') for word in r.readlines()]), False)
-				add('\\end{code}')
+				if fmt == 'h':
+					add('\\end{code}')
 				print('[File]', file, 'included')
 
 	add('\\end{document}')

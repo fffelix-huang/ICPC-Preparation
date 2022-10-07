@@ -1,3 +1,68 @@
+Setup
+	Template.h
+Data-Structure
+	HashMap.h
+	OrderStatisticTree.h
+	Segtree.h
+	LazySegtree.h
+	SparseTable.h
+	PersistentSegtree.h
+	ConvexHullTrick.h
+	LiChao.h
+	Treap.h
+	Chtholly.h
+Graph
+	SCC.h
+	TwoSat.h
+	LCA.h
+	HLD.h
+	Dinic.h
+	MCMF.h
+	BipartiteMatching.h
+	ArticulationPoints.h
+	Bridges.h
+	Hungarian.h
+	FlowModels.tex
+String
+	RollingHash.h
+	KMP.h
+	DynamicKMP.h
+	Z.h
+	Manacher.h
+	SmallestRotation.h
+	SuffixArray.h
+	LCP.h
+	AhoCorasick.h
+Math
+	ExtendGCD.h
+	InvGCD.h
+	Modint.h
+	ModInverses.h
+	PowMod.h
+	DiscreteLog.h
+	CRT.h
+	MillerRabin.h
+	PrimitiveRoot.h
+	LinearSieve.h
+	Factorizer.h
+	FloorSum.h
+	GaussJordan.h
+	Combination.h
+	Theorem.tex
+	Numbers.tex
+	BitTransform.h
+	FFT.h
+	Poly.h
+	GeneratingFunctions.tex
+	XorBasis.h
 Geometry
 	Point.h
+	LineSeg.h
 	ConvexHull.h
+	HalfPlaneIntersection.h
+Misc
+	TenarySearch.h
+	Aliens.h
+	Debug.h
+	Timer.h
+	ReadChar.h

@@ -4,7 +4,11 @@
 \usepackage[cache = false]{minted}
 \usemintedstyle{manni}
 
-\setlength{\topmargin}{0pt}
+\setlength{\headheight}{15.60004pt}
+
+% \setlength{\topmargin}{0pt}
+\setlength{\topmargin}{-3.60004pt}
+
 \setlength{\headsep}{10pt}
 \setlength{\textheight}{780pt}
 \setlength{\footskip}{20pt}
@@ -23,8 +27,24 @@
 \setlength{\lineskip}{1.2pt}
 % \setlength{\extrarowheight}{8pt}
 
+\usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \fancyhead[R]{\thepage}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyheadoffset{0cm}
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[R]{\thepage}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyhead[R]{\thepage}%
+}
+
 \newenvironment{code}{\VerbatimEnvironment\begin{minted}[mathescape, breaklines, linenos, numbersep=5pt, frame=lines, framesep=2mm]{c++}}{\end{minted}}
 
-\title{ICPC NTHU valderyayaorz}
-\author{llshang valderyaya Penguin07}
+\title{ICPC NTHU SplayTreap}
+% \author{llshangorz valderyayaorz}
 \date{\today}
