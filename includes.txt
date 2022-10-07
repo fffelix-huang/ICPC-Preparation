@@ -48,13 +48,13 @@ Math
 	FloorSum.h
 	GaussJordan.h
 	Combination.h
-	Theorem.tex
-	Numbers.tex
 	BitTransform.h
 	FFT.h
 	Poly.h
-	GeneratingFunctions.tex
 	XorBasis.h
+	Theorem.tex
+	Numbers.tex
+	GeneratingFunctions.tex
 Geometry
 	Point.h
 	LineSeg.h

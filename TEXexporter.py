@@ -45,7 +45,10 @@ if __name__ == '__main__':
 			else:
 				pos = file.find('.')
 				fmt = file[pos + 1:]
-				add(f'\\subsection{{{file[: pos]}}}')
+				if fmt == 'tex':
+					add(f'\\subsection{{{file[: pos]}}}')
+				else:
+					add(f'\\subsection{{{file}}}')
 				if fmt == 'h':
 					add('\\begin{code}')
 				with open(os.path.join(current_dir, file)) as r:

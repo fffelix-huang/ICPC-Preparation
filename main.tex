@@ -51,7 +51,7 @@
 \maketitle
 \tableofcontents
 \section{Setup}
-\subsection{Template}
+\subsection{Template.h}
 \begin{code}
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
@@ -75,7 +75,7 @@ template<class T> inline bool chmin(T& a, const T& b) { if(a > b) { a = b; retur
 template<class T> inline bool chmax(T& a, const T& b) { if(a < b) { a = b; return true; } return false; }
 const double EPS = 1e-9;\end{code}
 \section{Data-structure}
-\subsection{HashMap}
+\subsection{HashMap.h}
 \begin{code}
 struct splitmix64_hash {
     static ull splitmix64(ull x) {
@@ -92,12 +92,12 @@ struct splitmix64_hash {
 template<class T, class U, class H = splitmix64_hash> using hash_map = gp_hash_table<T, U, H>;
 template<class T, class H = splitmix64_hash> using hash_set = hash_map<T, null_type, H>;
 \end{code}
-\subsection{OrderStatisticTree}
+\subsection{OrderStatisticTree.h}
 \begin{code}
 template<class T, class Comp = less<T>> using ordered_set = tree<T, null_type, Comp, rb_tree_tag, tree_order_statistics_node_update>;
 template<class T> using ordered_multiset = ordered_set<T, less_equal<T>>;
 // Use `s.erase(s.find_by_order(s.order_of_key(x)))` when using `ordered_multiset`\end{code}
-\subsection{Segtree}
+\subsection{Segtree.h}
 \begin{code}
 template<class S, S (*e)(), S (*op)(S, S)>
 class segtree {
@@ -190,7 +190,7 @@ private:
     inline void update(int v) { st[v] = op(st[v * 2], st[v * 2 + 1]); }
 };
 \end{code}
-\subsection{LazySegtree}
+\subsection{LazySegtree.h}
 \begin{code}
 template<class S,
          S (*e)(),
@@ -353,7 +353,7 @@ private:
     }
 };
 \end{code}
-\subsection{SparseTable}
+\subsection{SparseTable.h}
 \begin{code}
 template<class T, T (*op)(T, T)> struct sparse_table {
     int n;
@@ -378,7 +378,7 @@ template<class T, T (*op)(T, T)> struct sparse_table {
     }
 };
 \end{code}
-\subsection{PersistentSegtree}
+\subsection{PersistentSegtree.h}
 \begin{code}
 // 1. Set the value $a$ in array $k$ to $x$.
 // 2. Calculate the sum of values in range $[a, b]$ in array $k$.
@@ -437,7 +437,7 @@ int main() {
     }
     return 0;
 }\end{code}
-\subsection{ConvexHullTrick}
+\subsection{ConvexHullTrick.h}
 \begin{code}
 struct Line_t {
     mutable ll k, m, p;
@@ -473,7 +473,7 @@ struct CHT : multiset<Line_t, less<>> {
     }
 };
 \end{code}
-\subsection{LiChao}
+\subsection{LiChao.h}
 \begin{code}
 template<class T> struct LiChaoTree {
     static constexpr T INF = numeric_limits<T>::max();
@@ -534,7 +534,7 @@ template<class T> struct LiChaoTree {
     }
 };
 \end{code}
-\subsection{Treap}
+\subsection{Treap.h}
 \begin{code}
 template<class S,
          S (*e)(),
@@ -619,7 +619,7 @@ private:
 };
 using TP = Treap<S, e, op, F, id, mapping, composition>;
 \end{code}
-\subsection{Chtholly}
+\subsection{Chtholly.h}
 \begin{code}
 struct ODT {
     struct S {
@@ -646,7 +646,7 @@ struct ODT {
     }
 };\end{code}
 \section{Graph}
-\subsection{SCC}
+\subsection{SCC.h}
 \begin{code}
 struct SCC {
     int n;
@@ -686,7 +686,7 @@ struct SCC {
     }
 };
 \end{code}
-\subsection{TwoSat}
+\subsection{TwoSat.h}
 \begin{code}
 struct TwoSat {
     int n;
@@ -708,7 +708,7 @@ struct TwoSat {
     }
 };
 \end{code}
-\subsection{LCA}
+\subsection{LCA.h}
 \begin{code}
 struct LCA {
     LCA() : LCA(0) {}
@@ -808,7 +808,7 @@ struct LCA {
     sparse_table<pii, __lca_op> st;
 };
 \end{code}
-\subsection{HLD}
+\subsection{HLD.h}
 \begin{code}
 struct HLD : LCA {
 public:
@@ -843,7 +843,7 @@ public:
     }
 };
 \end{code}
-\subsection{Dinic}
+\subsection{Dinic.h}
 \begin{code}
 template<class T> struct Dinic {
     struct Edge {
@@ -912,7 +912,7 @@ template<class T> struct Dinic {
     }
 };
 \end{code}
-\subsection{MCMF}
+\subsection{MCMF.h}
 \begin{code}
 template<class Cap_t, class Cost_t> struct MCMF {
     struct Edge {
@@ -991,7 +991,7 @@ template<class Cap_t, class Cost_t> struct MCMF {
     }
 };
 \end{code}
-\subsection{BipartiteMatching}
+\subsection{BipartiteMatching.h}
 \begin{code}
 vector<int> v[Nx];
 bitset<Nx> vis;
@@ -1007,7 +1007,7 @@ int matching(){
     REP(i,n) if(vis.reset(),dfs(i)) ans++;
     return ans;
 }\end{code}
-\subsection{ArticulationPoints}
+\subsection{ArticulationPoints.h}
 \begin{code}
 vector<int> ArticulationPoints(const vector<vector<int>>& g) {
     int n = SZ(g);
@@ -1035,7 +1035,7 @@ vector<int> ArticulationPoints(const vector<vector<int>>& g) {
     }
     return cuts;
 }\end{code}
-\subsection{Bridges}
+\subsection{Bridges.h}
 \begin{code}
 vector<pii> findBridges(const vector<vector<int>>& g) {
     int n = (int) g.size();
@@ -1060,7 +1060,7 @@ vector<pii> findBridges(const vector<vector<int>>& g) {
     return bridges;
 }
 \end{code}
-\subsection{Hungarian}
+\subsection{Hungarian.h}
 \begin{code}
 pair<ll, vector<pair<int, int>>> Hungarian(const vector<vector<ll>>& g) {
     const ll INF = LLONG_MAX;
@@ -1193,7 +1193,7 @@ pair<ll, vector<pair<int, int>>> Hungarian(const vector<vector<ll>>& g) {
     \end{enumerate}
 \end{itemize}
 \section{String}
-\subsection{RollingHash}
+\subsection{RollingHash.h}
 \begin{code}
 template<class T> struct Rolling_Hash {
     Rolling_Hash() {}
@@ -1213,7 +1213,7 @@ template<class T> struct Rolling_Hash {
     vector<T> pref;
 };
 \end{code}
-\subsection{KMP}
+\subsection{KMP.h}
 \begin{code}
 template<class T> vector<int> KMP(const vector<T>& a) {
     int n = SZ(a);
@@ -1227,7 +1227,7 @@ template<class T> vector<int> KMP(const vector<T>& a) {
     return k;
 }
 \end{code}
-\subsection{DynamicKMP}
+\subsection{DynamicKMP.h}
 \begin{code}
 template<int ALPHABET, int (*f)(char)>
 struct DynamicKMP {
@@ -1257,7 +1257,7 @@ struct DynamicKMP {
     vector<int> query_all() const { return p; }
     void reserve(int sz) { p.reserve(sz); dp.reserve(sz); }
 };\end{code}
-\subsection{Z}
+\subsection{Z.h}
 \begin{code}
 template<class T>
 vector<int> z_algorithm(const vector<T>& a) {
@@ -1271,7 +1271,7 @@ vector<int> z_algorithm(const vector<T>& a) {
     return z;
 }
 \end{code}
-\subsection{Manacher}
+\subsection{Manacher.h}
 \begin{code}
 template<class T>
 vector<int> manacher_odd(const vector<T>& a) {
@@ -1292,7 +1292,7 @@ vector<int> manacher_odd(const vector<T>& a) {
     return vector<int>(1 + ALL(z) - 1);
 }
 \end{code}
-\subsection{SmallestRotation}
+\subsection{SmallestRotation.h}
 \begin{code}
 string SmallestRotation(string s) {
     int n = SZ(s), i = 0, j = 1;
@@ -1306,7 +1306,7 @@ string SmallestRotation(string s) {
     }
     return s.substr(i < n ? i : j, n);
 }\end{code}
-\subsection{SuffixArray}
+\subsection{SuffixArray.h}
 \begin{code}
 vector<int> sa_is(const vector<int>& s, int upper) {
     int n = SZ(s);
@@ -1394,7 +1394,7 @@ vector<int> sa_is(const vector<int>& s, int upper) {
     return sa;
 }
 \end{code}
-\subsection{LCP}
+\subsection{LCP.h}
 \begin{code}
 template<class T>
 vector<int> lcp_array(const vector<T>& s, const vector<int>& sa) {
@@ -1416,7 +1416,7 @@ vector<int> lcp_array(const vector<T>& s, const vector<int>& sa) {
     return lcp;
 }
 \end{code}
-\subsection{AhoCorasick}
+\subsection{AhoCorasick.h}
 \begin{code}
 template<int ALPHABET, int (*f)(char)>
 struct AhoCorasick {
@@ -1477,7 +1477,7 @@ struct AhoCorasick {
 };
 \end{code}
 \section{Math}
-\subsection{ExtendGCD}
+\subsection{ExtendGCD.h}
 \begin{code}
 // @return $x, y$ s.t. $ax + by = \gcd(a, b)$
 ll ext_gcd(ll a, ll b, ll& x, ll& y) {
@@ -1494,7 +1494,7 @@ ll ext_gcd(ll a, ll b, ll& x, ll& y) {
     return g;
 }
 \end{code}
-\subsection{InvGCD}
+\subsection{InvGCD.h}
 \begin{code}
 // @param $1 \leq b$
 // @return ${g, x}$ s.t.
@@ -1518,7 +1518,7 @@ pair<ll, ll> inv_gcd(ll a, ll b) {
     return {s, m0};
 }
 \end{code}
-\subsection{Modint}
+\subsection{Modint.h}
 \begin{code}
 template<int m>
 struct modint {
@@ -1580,7 +1580,7 @@ template<int m> istream& operator>>(istream& in, modint<m>& num) {
 template<int m> ostream& operator<<(ostream& out, const modint<m>& num) {
     return out << num();
 }\end{code}
-\subsection{ModInverses}
+\subsection{ModInverses.h}
 \begin{code}
 // @return array $A$ of length $N$ s.t
 //    $i \cdot A_i = 1 \pmod{m}$
@@ -1595,7 +1595,7 @@ vector<int> mod_inverse(int m, int n = -1) {
     return inv;
 }
 \end{code}
-\subsection{PowMod}
+\subsection{PowMod.h}
 \begin{code}
 // @param $0 \leq n$
 // @param $1 \leq m$
@@ -1615,7 +1615,7 @@ constexpr long long pow_mod_constexpr(long long x, long long n, int m) {
     return r;
 }
 \end{code}
-\subsection{DiscreteLog}
+\subsection{DiscreteLog.h}
 \begin{code}
 int DiscreteLog(int s, int x, int y, int m) {
     constexpr int K = 0;
@@ -1643,7 +1643,7 @@ int DiscreteLog(int x, int y, int m) {
     int p = 100 + DiscreteLog(s, x, y, m);
     return (pow_mod(x, p, m) != y ? -1 : p);
 }\end{code}
-\subsection{CRT}
+\subsection{CRT.h}
 \begin{code}
 // @return
 //    $\text{remainder, modulo}$
@@ -1679,7 +1679,7 @@ pair<ll, ll> crt(const vector<ll>& r, const vector<ll>& m) {
     return {r0, m0};
 }
 \end{code}
-\subsection{MillerRabin}
+\subsection{MillerRabin.h}
 \begin{code}
 constexpr bool is_prime_constexpr(int n) {
     if(n <= 1) return false;
@@ -1717,7 +1717,7 @@ bool is_prime_ll(ull n) {
     return true;
 }
 \end{code}
-\subsection{PrimitiveRoot}
+\subsection{PrimitiveRoot.h}
 \begin{code}
 // Compile time primitive root
 // @param $m$ must be prime
@@ -1757,7 +1757,7 @@ constexpr int primitive_root_constexpr(int m) {
 }
 template<int m> constexpr int primitive_root = primitive_root_constexpr(m);
 \end{code}
-\subsection{LinearSieve}
+\subsection{LinearSieve.h}
 \begin{code}
 vector<bool> isprime;
 vector<int> primes, phi, mobius;
@@ -1788,7 +1788,7 @@ void linear_sieve(int n) {
     }
 }
 \end{code}
-\subsection{Factorizer}
+\subsection{Factorizer.h}
 \begin{code}
 template<class T>
 vector<pair<T, int>> MergeFactors(const vector<pair<T, int>>& a, const vector<pair<T, int>>& b) {
@@ -1850,7 +1850,7 @@ vector<T> BuildDivisorsFromFactors(const vector<pair<T, int>>& factors) {
     return divisors;
 }
 \end{code}
-\subsection{FloorSum}
+\subsection{FloorSum.h}
 \begin{code}
 // @param $n < 2^{32}$
 // @param $1 \leq m < 2^{32}$
@@ -1891,7 +1891,7 @@ ll floor_sum(ll n, ll m, ll a, ll b) {
     return ans + floor_sum_unsigned(n, m, a, b);
 }
 \end{code}
-\subsection{GaussJordan}
+\subsection{GaussJordan.h}
 \begin{code}
 const double EPS = 1e-9;
 // $O(\min(N, M) \cdot NM)$
@@ -1930,7 +1930,7 @@ int Gauss(vector<vector<double>> a, vector<double>& ans) {
     return 1;
 }
 \end{code}
-\subsection{Combination}
+\subsection{Combination.h}
 \begin{code}
 vector<mint> fact{1}, inv_fact{1};
 void init_fact(int n) {
@@ -1954,73 +1954,7 @@ mint permute(int n, int k) {
     return fact[n] * inv_fact[n - k];
 }
 \end{code}
-\subsection{Theorem}
-\begin{itemize}
-\item Cramer's rule
-$$
-\begin{aligned}ax+by=e\\cx+dy=f\end{aligned}
-\Rightarrow
-\begin{aligned}x=\dfrac{ed-bf}{ad-bc}\\y=\dfrac{af-ec}{ad-bc}\end{aligned}
-$$
-\item Kirchhoff's Theorem
-Denote $L$ be a $n \times n$ matrix as the Laplacian matrix of graph $G$, where $L_{ii} = d(i)$, $L_{ij} = -c$ where $c$ is the number of edge $(i, j)$ in $G$.
-\begin{itemize}
-    \itemsep-0.5em
-    \item The number of undirected spanning in $G$ is $\lvert \det(\tilde{L}_{11}) \rvert$.
-    \item The number of directed spanning tree rooted at $r$ in $G$ is $\lvert \det(\tilde{L}_{rr}) \rvert$.
-\end{itemize}
-\item Tutte's Matrix
-Let $D$ be a $n \times n$ matrix, where $d_{ij} = x_{ij}$ ($x_{ij}$ is chosen uniformly at random) if $i < j$ and $(i, j) \in E$, otherwise $d_{ij} = -d_{ji}$. $\frac{rank(D)}{2}$ is the maximum matching on $G$.
-\item Cayley's Formula
-\begin{itemize}
-    \itemsep-0.5em
-  \item Given a degree sequence $d_1, d_2, \ldots, d_n$ for each \textit{labeled} vertices, there are $\frac{(n - 2)!}{(d_1 - 1)!(d_2 - 1)!\cdots(d_n - 1)!}$ spanning trees.
-  \item Let $T_{n, k}$ be the number of \textit{labeled} forests on $n$ vertices with $k$ components, such that vertex $1, 2, \ldots, k$ belong to different components. Then $T_{n, k} = kn^{n - k - 1}$.
-\end{itemize}
-\item Erdős–Gallai theorem 
-A sequence of nonnegative integers $d_1\ge\cdots\ge d_n$ can be represented as the degree sequence of a finite simple graph on $n$ vertices if and only if $d_1+\cdots+d_n$ is even and $\displaystyle\sum_{i-1}^kd_i\le k(k-1)+\displaystyle\sum_{i=k+1}^n\min(d_i,k)$ holds for every $1\le k\le n$.
-\item Gale–Ryser theorem
-A pair of sequences of nonnegative integers $a_1\ge\cdots\ge a_n$ and $b_1,\ldots,b_n$ is bigraphic if and only if $\displaystyle\sum_{i=1}^n a_i=\displaystyle\sum_{i=1}^n b_i$ and $\displaystyle\sum_{i=1}^k a_i\le \displaystyle\sum_{i=1}^n\min(b_i,k)$ holds for every $1\le k\le n$.
-\item Fulkerson–Chen–Anstee theorem
-A sequence $(a_1,b_1),\ldots,(a_n,b_n)$ of nonnegative integer pairs with $a_1\ge\cdots\ge a_n$ is digraphic if and only if $\displaystyle\sum_{i=1}^n a_i=\displaystyle\sum_{i=1}^n b_i$ and $\displaystyle\sum_{i=1}^k a_i\le \displaystyle\sum_{i=1}^k\min(b_i,k-1)+\displaystyle\sum_{i=k+1}^n\min(b_i,k)$ holds for every $1\le k\le n$.
-\item Möbius inversion formula
-\begin{itemize}
-    \itemsep-0.5em
-  \item $f(n)=\sum_{d\mid n}g(d)\Leftrightarrow g(n)=\sum_{d\mid n}\mu(d)f(\frac{n}{d})$
-  \item $f(n)=\sum_{n\mid d}g(d)\Leftrightarrow g(n)=\sum_{n\mid d}\mu(\frac{d}{n})f(d)$
-\end{itemize}
-\item Spherical cap
-\begin{itemize}
-    \itemsep-0.5em
-  \item A portion of a sphere cut off by a plane.
-  \item $r$: sphere radius, $a$: radius of the base of the cap, $h$: height of the cap, $\theta$: $\arcsin(a/r)$.
-  \item Volume $=\pi h^2(3r-h)/3=\pi h(3a^2+h^2)/6=\pi r^3(2+\cos\theta)(1-\cos\theta)^2/3$.
-  \item Area $=2\pi rh=\pi(a^2+h^2)=2\pi r^2(1-\cos\theta)$.
-\end{itemize}
-\end{itemize}
-\subsection{Numbers}
-\begin{itemize}
-\item Bernoulli numbers
-$B_0-1,B_1^{\pm}=\pm\frac{1}{2},B_2=\frac{1}{6},B_3=0$
-$\displaystyle\sum_{j=0}^m\binom{m+1}{j}B_j=0$, EGF is $B(x) = \frac{x}{e^x - 1}=\displaystyle\sum_{n=0}^\infty B_n\frac{x^n}{n!}$.
-$S_m(n)=\displaystyle\sum_{k=1}^nk^m=\frac{1}{m+1}\sum_{k=0}^m\binom{m+1}{k}B^{+}_kn^{m+1-k}$
-\item Stirling numbers of the second kind
-Partitions of $n$ distinct elements into exactly $k$ groups. 
-$S(n, k) = S(n - 1, k - 1) + kS(n - 1, k), S(n, 1) = S(n, n) = 1$
-$S(n, k) = \frac{1}{k!}\sum_{i=0}^{k}(-1)^{k-i}{k \choose i}i^n$
-$x^n     = \sum_{i=0}^{n} S(n, i) (x)_i$
-\item Pentagonal number theorem
-$\displaystyle\prod_{n=1}^{\infty}(1-x^n)=1+\sum_{k=1}^{\infty}(-1)^k\left(x^{k(3k+1)/2} + x^{k(3k-1)/2}\right)$
-\item Catalan numbers
-$C^{(k)}_n = \displaystyle \frac{1}{(k - 1)n + 1}\binom{kn}{n}$
-$C^{(k)}(x) = 1 + x [C^{(k)}(x)]^k$
-\item Eulerian numbers
-Number of permutations $\pi \in S_n$ in which exactly $k$ elements are greater than the previous element. $k$ $j$:s s.t. $\pi(j)>\pi(j+1)$, $k+1$ $j$:s s.t. $\pi(j)\geq j$, $k$ $j$:s s.t. $\pi(j)>j$.
-$E(n,k) = (n-k)E(n-1,k-1) + (k+1)E(n-1,k)$
-$E(n,0) = E(n,n-1) = 1$
-$E(n,k) = \sum_{j=0}^k(-1)^j\binom{n+1}{j}(k+1-j)^n$
-\end{itemize}
-\subsection{BitTransform}
+\subsection{BitTransform.h}
 \begin{code}
 template<class T> void OrTransform(vector<T>& a) {
     const int n = SZ(a);
@@ -2144,7 +2078,7 @@ template<class T> vector<T> SubsetSumConvolution(const vector<T>& f, const vecto
     return result;
 }
 \end{code}
-\subsection{FFT}
+\subsection{FFT.h}
 \begin{code}
 void FFT(vector<cd>& a, bool inv) {
     int n = SZ(a);
@@ -2172,7 +2106,7 @@ void FFT(vector<cd>& a, bool inv) {
     }
 }
 \end{code}
-\subsection{Poly}
+\subsection{Poly.h}
 \begin{code}
 vector<int> __bit_reorder;
 template<class T>
@@ -2384,37 +2318,7 @@ private:
 };
 template<class T> vector<T> Poly<T>::roots{0, 1};
 \end{code}
-\subsection{GeneratingFunctions}
-\begin{itemize}
-\item Ordinary Generating Function
-$A(x) = \sum_{i\ge 0} a_ix^i$
-\begin{itemize}
-    \itemsep-0.5em
-    \item $A(rx)             \Rightarrow r^na_n$
-    \item $A(x) + B(x)       \Rightarrow a_n + b_n$
-    \item $A(x)B(x)          \Rightarrow \sum_{i=0}^{n} a_ib_{n-i}$
-    \item $A(x)^k            \Rightarrow \sum_{i_1+i_2+\cdots+i_k=n} a_{i_1}a_{i_2}\ldots a_{i_k}$
-    \item $xA(x)'            \Rightarrow na_n$
-    \item $\frac{A(x)}{1-x}  \Rightarrow \sum_{i=0}^{n} a_i$
-\end{itemize}
-\item Exponential Generating Function
-$A(x) = \sum_{i\ge 0} \frac{a_i}{i!}x_i$
-\begin{itemize}
-    \itemsep-0.5em
-    \item $A(x) + B(x)       \Rightarrow a_n + b_n$
-    \item $A^{(k)}(x)        \Rightarrow a_{n+k}$
-    \item $A(x)B(x)          \Rightarrow \sum_{i=0}^{n} \binom{n}{i}a_ib_{n-i}$
-    \item $A(x)^k            \Rightarrow \sum_{i_1+i_2+\cdots+i_k=n} \binom{n}{i_1, i_2, \ldots, i_k}a_{i_1}a_{i_2}\ldots a_{i_k}$
-    \item $xA(x)             \Rightarrow na_n$
-\end{itemize}
-\item Special Generating Function
-\begin{itemize}
-    \itemsep-0.5em
-    \item $(1+x)^n           = \sum_{i\ge 0} \binom{n}{i}x^i$
-    \item $\frac{1}{(1-x)^n} = \sum_{i\ge 0} \binom{i}{n-1}x^i$
-\end{itemize}
-\end{itemize}
-\subsection{XorBasis}
+\subsection{XorBasis.h}
 \begin{code}
 template<int LOG> struct XorBasis {
     bool zero = false;
@@ -2476,8 +2380,104 @@ template<int LOG> struct XorBasis {
     }
 };
 \end{code}
+\subsection{Theorem}
+\begin{itemize}
+\item Cramer's rule
+$$
+\begin{aligned}ax+by=e\\cx+dy=f\end{aligned}
+\Rightarrow
+\begin{aligned}x=\dfrac{ed-bf}{ad-bc}\\y=\dfrac{af-ec}{ad-bc}\end{aligned}
+$$
+\item Kirchhoff's Theorem
+Denote $L$ be a $n \times n$ matrix as the Laplacian matrix of graph $G$, where $L_{ii} = d(i)$, $L_{ij} = -c$ where $c$ is the number of edge $(i, j)$ in $G$.
+\begin{itemize}
+    \itemsep-0.5em
+    \item The number of undirected spanning in $G$ is $\lvert \det(\tilde{L}_{11}) \rvert$.
+    \item The number of directed spanning tree rooted at $r$ in $G$ is $\lvert \det(\tilde{L}_{rr}) \rvert$.
+\end{itemize}
+\item Tutte's Matrix
+Let $D$ be a $n \times n$ matrix, where $d_{ij} = x_{ij}$ ($x_{ij}$ is chosen uniformly at random) if $i < j$ and $(i, j) \in E$, otherwise $d_{ij} = -d_{ji}$. $\frac{rank(D)}{2}$ is the maximum matching on $G$.
+\item Cayley's Formula
+\begin{itemize}
+    \itemsep-0.5em
+  \item Given a degree sequence $d_1, d_2, \ldots, d_n$ for each \textit{labeled} vertices, there are $\frac{(n - 2)!}{(d_1 - 1)!(d_2 - 1)!\cdots(d_n - 1)!}$ spanning trees.
+  \item Let $T_{n, k}$ be the number of \textit{labeled} forests on $n$ vertices with $k$ components, such that vertex $1, 2, \ldots, k$ belong to different components. Then $T_{n, k} = kn^{n - k - 1}$.
+\end{itemize}
+\item Erdős–Gallai theorem 
+A sequence of nonnegative integers $d_1\ge\cdots\ge d_n$ can be represented as the degree sequence of a finite simple graph on $n$ vertices if and only if $d_1+\cdots+d_n$ is even and $\displaystyle\sum_{i-1}^kd_i\le k(k-1)+\displaystyle\sum_{i=k+1}^n\min(d_i,k)$ holds for every $1\le k\le n$.
+\item Gale–Ryser theorem
+A pair of sequences of nonnegative integers $a_1\ge\cdots\ge a_n$ and $b_1,\ldots,b_n$ is bigraphic if and only if $\displaystyle\sum_{i=1}^n a_i=\displaystyle\sum_{i=1}^n b_i$ and $\displaystyle\sum_{i=1}^k a_i\le \displaystyle\sum_{i=1}^n\min(b_i,k)$ holds for every $1\le k\le n$.
+\item Fulkerson–Chen–Anstee theorem
+A sequence $(a_1,b_1),\ldots,(a_n,b_n)$ of nonnegative integer pairs with $a_1\ge\cdots\ge a_n$ is digraphic if and only if $\displaystyle\sum_{i=1}^n a_i=\displaystyle\sum_{i=1}^n b_i$ and $\displaystyle\sum_{i=1}^k a_i\le \displaystyle\sum_{i=1}^k\min(b_i,k-1)+\displaystyle\sum_{i=k+1}^n\min(b_i,k)$ holds for every $1\le k\le n$.
+\item Möbius inversion formula
+\begin{itemize}
+    \itemsep-0.5em
+  \item $f(n)=\sum_{d\mid n}g(d)\Leftrightarrow g(n)=\sum_{d\mid n}\mu(d)f(\frac{n}{d})$
+  \item $f(n)=\sum_{n\mid d}g(d)\Leftrightarrow g(n)=\sum_{n\mid d}\mu(\frac{d}{n})f(d)$
+\end{itemize}
+\item Spherical cap
+\begin{itemize}
+    \itemsep-0.5em
+  \item A portion of a sphere cut off by a plane.
+  \item $r$: sphere radius, $a$: radius of the base of the cap, $h$: height of the cap, $\theta$: $\arcsin(a/r)$.
+  \item Volume $=\pi h^2(3r-h)/3=\pi h(3a^2+h^2)/6=\pi r^3(2+\cos\theta)(1-\cos\theta)^2/3$.
+  \item Area $=2\pi rh=\pi(a^2+h^2)=2\pi r^2(1-\cos\theta)$.
+\end{itemize}
+\end{itemize}
+\subsection{Numbers}
+\begin{itemize}
+\item Bernoulli numbers
+$B_0-1,B_1^{\pm}=\pm\frac{1}{2},B_2=\frac{1}{6},B_3=0$
+$\displaystyle\sum_{j=0}^m\binom{m+1}{j}B_j=0$, EGF is $B(x) = \frac{x}{e^x - 1}=\displaystyle\sum_{n=0}^\infty B_n\frac{x^n}{n!}$.
+$S_m(n)=\displaystyle\sum_{k=1}^nk^m=\frac{1}{m+1}\sum_{k=0}^m\binom{m+1}{k}B^{+}_kn^{m+1-k}$
+\item Stirling numbers of the second kind
+Partitions of $n$ distinct elements into exactly $k$ groups. 
+$S(n, k) = S(n - 1, k - 1) + kS(n - 1, k), S(n, 1) = S(n, n) = 1$
+$S(n, k) = \frac{1}{k!}\sum_{i=0}^{k}(-1)^{k-i}{k \choose i}i^n$
+$x^n     = \sum_{i=0}^{n} S(n, i) (x)_i$
+\item Pentagonal number theorem
+$\displaystyle\prod_{n=1}^{\infty}(1-x^n)=1+\sum_{k=1}^{\infty}(-1)^k\left(x^{k(3k+1)/2} + x^{k(3k-1)/2}\right)$
+\item Catalan numbers
+$C^{(k)}_n = \displaystyle \frac{1}{(k - 1)n + 1}\binom{kn}{n}$
+$C^{(k)}(x) = 1 + x [C^{(k)}(x)]^k$
+\item Eulerian numbers
+Number of permutations $\pi \in S_n$ in which exactly $k$ elements are greater than the previous element. $k$ $j$:s s.t. $\pi(j)>\pi(j+1)$, $k+1$ $j$:s s.t. $\pi(j)\geq j$, $k$ $j$:s s.t. $\pi(j)>j$.
+$E(n,k) = (n-k)E(n-1,k-1) + (k+1)E(n-1,k)$
+$E(n,0) = E(n,n-1) = 1$
+$E(n,k) = \sum_{j=0}^k(-1)^j\binom{n+1}{j}(k+1-j)^n$
+\end{itemize}
+\subsection{GeneratingFunctions}
+\begin{itemize}
+\item Ordinary Generating Function
+$A(x) = \sum_{i\ge 0} a_ix^i$
+\begin{itemize}
+    \itemsep-0.5em
+    \item $A(rx)             \Rightarrow r^na_n$
+    \item $A(x) + B(x)       \Rightarrow a_n + b_n$
+    \item $A(x)B(x)          \Rightarrow \sum_{i=0}^{n} a_ib_{n-i}$
+    \item $A(x)^k            \Rightarrow \sum_{i_1+i_2+\cdots+i_k=n} a_{i_1}a_{i_2}\ldots a_{i_k}$
+    \item $xA(x)'            \Rightarrow na_n$
+    \item $\frac{A(x)}{1-x}  \Rightarrow \sum_{i=0}^{n} a_i$
+\end{itemize}
+\item Exponential Generating Function
+$A(x) = \sum_{i\ge 0} \frac{a_i}{i!}x_i$
+\begin{itemize}
+    \itemsep-0.5em
+    \item $A(x) + B(x)       \Rightarrow a_n + b_n$
+    \item $A^{(k)}(x)        \Rightarrow a_{n+k}$
+    \item $A(x)B(x)          \Rightarrow \sum_{i=0}^{n} \binom{n}{i}a_ib_{n-i}$
+    \item $A(x)^k            \Rightarrow \sum_{i_1+i_2+\cdots+i_k=n} \binom{n}{i_1, i_2, \ldots, i_k}a_{i_1}a_{i_2}\ldots a_{i_k}$
+    \item $xA(x)             \Rightarrow na_n$
+\end{itemize}
+\item Special Generating Function
+\begin{itemize}
+    \itemsep-0.5em
+    \item $(1+x)^n           = \sum_{i\ge 0} \binom{n}{i}x^i$
+    \item $\frac{1}{(1-x)^n} = \sum_{i\ge 0} \binom{i}{n-1}x^i$
+\end{itemize}
+\end{itemize}
 \section{Geometry}
-\subsection{Point}
+\subsection{Point.h}
 \begin{code}
 template<class T> struct Point {
     T x, y;
@@ -2545,7 +2545,7 @@ istream& operator>>(istream& in, Point<T>& p) {
     return in >> p.x >> p.y;
 }
 \end{code}
-\subsection{LineSeg}
+\subsection{LineSeg.h}
 \begin{code}
 int sign(const double& a) { return fabs(a) < EPS ? 0 : a > 0 ? 1 : -1; }
 template<class T>
@@ -2574,7 +2574,7 @@ Point<T> intersect(const Point<T>& a, const Point<T>& b, const Point<T>& c, cons
     T a124 = cross(b - a, d - a);
     return (d * a123 - c * a124) / (a123 - a124);
 }\end{code}
-\subsection{ConvexHull}
+\subsection{ConvexHull.h}
 \begin{code}
 // @return the points of the convex hull in clock-wise order
 template<class T>
@@ -2606,7 +2606,7 @@ vector<Point<T>> ConvexHull(vector<Point<T>> points) {
     return upper;
 }
 \end{code}
-\subsection{HalfPlaneIntersection}
+\subsection{HalfPlaneIntersection.h}
 \begin{code}
 struct Halfplane { 
     Point p, pq; 
@@ -2661,7 +2661,7 @@ vector<Point> hp_intersect(vector<Halfplane>& H) {
 }
 \end{code}
 \section{Misc}
-\subsection{TenarySearch}
+\subsection{TenarySearch.h}
 \begin{code}
 // return the maximum of $f(x)$ in $[l, r]$
 double ternary_search(double l, double r) {
@@ -2683,7 +2683,7 @@ int ternary_search(int l, int r) {
     }
     return r;
 }\end{code}
-\subsection{Aliens}
+\subsection{Aliens.h}
 \begin{code}
 // find minimum
 int Aliens(int l, int r, int k, const function<pii(int)>& f) {
@@ -2696,7 +2696,7 @@ int Aliens(int l, int r, int k, const function<pii(int)>& f) {
     }
     return f(l).first - l * k;
 }\end{code}
-\subsection{Debug}
+\subsection{Debug.h}
 \begin{code}
 #ifdef LOCAL
     #define eprintf(...) { fprintf(stderr, __VA_ARGS__); fflush(stderr); }
@@ -2704,14 +2704,14 @@ int Aliens(int l, int r, int k, const function<pii(int)>& f) {
     #define eprintf(...) 42
 #endif
 \end{code}
-\subsection{Timer}
+\subsection{Timer.h}
 \begin{code}
 const clock_t startTime = clock();
 inline double getCurrentTime() {
     return (double) (clock() - startTime) / CLOCKS_PER_SEC;
 }
 \end{code}
-\subsection{ReadChar}
+\subsection{ReadChar.h}
 \begin{code}
 inline char gc() {
     static const int SZ = 1 << 20;
