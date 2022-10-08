@@ -1,8 +1,3 @@
-// @param $1 \leq b$
-// @return ${g, x}$ s.t.
-//	$g = \gcd(a, b)$
-//	$ax = g \pmod{b}$
-//	$0 \leq x < \frac{b}{g}$
 pair<ll, ll> inv_gcd(ll a, ll b) {
 	a %= b;
 	if(a < 0) a += b;

@@ -51,10 +51,3 @@ template<int m, class T> modint<m> operator*(const T& lhs, const modint<m>& rhs)
 template<int m, class T> modint<m> operator/(const T& lhs, const modint<m>& rhs) {
 	return modint<m>(lhs) /= rhs;
 }
-template<int m> istream& operator>>(istream& in, modint<m>& num) {
-	long long x; in >> x; num = modint<m>(x);
-	return in;
-}
-template<int m> ostream& operator<<(ostream& out, const modint<m>& num) {
-	return out << num();
-}

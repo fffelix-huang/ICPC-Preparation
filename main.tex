@@ -73,7 +73,8 @@ using vl = vector<ll>;
 #define S second
 template<class T> inline bool chmin(T& a, const T& b) { if(a > b) { a = b; return true; } return false; }
 template<class T> inline bool chmax(T& a, const T& b) { if(a < b) { a = b; return true; } return false; }
-const double EPS = 1e-9;\end{code}
+const double EPS = 1e-9;
+\end{code}
 \section{Data-structure}
 \subsection{HashMap.h}
 \begin{code}
@@ -96,7 +97,8 @@ template<class T, class H = splitmix64_hash> using hash_set = hash_map<T, null_t
 \begin{code}
 template<class T, class Comp = less<T>> using ordered_set = tree<T, null_type, Comp, rb_tree_tag, tree_order_statistics_node_update>;
 template<class T> using ordered_multiset = ordered_set<T, less_equal<T>>;
-// Use `s.erase(s.find_by_order(s.order_of_key(x)))` when using `ordered_multiset`\end{code}
+// Use `s.erase(s.find_by_order(s.order_of_key(x)))` when using `ordered_multiset`
+\end{code}
 \subsection{Segtree.h}
 \begin{code}
 template<class S, S (*e)(), S (*op)(S, S)>
@@ -436,7 +438,8 @@ int main() {
         }
     }
     return 0;
-}\end{code}
+}
+\end{code}
 \subsection{ConvexHullTrick.h}
 \begin{code}
 struct Line_t {
@@ -644,7 +647,8 @@ struct ODT {
         seg.erase(it, itr);
         seg.insert(S(l, r, v));
     }
-};\end{code}
+};
+\end{code}
 \section{Graph}
 \subsection{SCC.h}
 \begin{code}
@@ -998,15 +1002,19 @@ bitset<Nx> vis;
 int mp[Nx],mq[Mx];
 bool dfs(int x){
     vis[x]=1;
-    for(int i:v[x]) if(!~mq[i] || !vis[mq[i]] && dfs(mq[i])) return mq[ mp[x] = i ] = x,1;
+    for(int i : v[x]) if(!~mq[i] || !vis[mq[i]] && dfs(mq[i])) return mq[ mp[x] = i ] = x, 1;
     return 0;
 }
 int matching(){
-    int ans=0;
-    memset(mq,-1,sizeof(mq)),memset(mp,-1,sizeof(mp));
-    REP(i,n) if(vis.reset(),dfs(i)) ans++;
+    int ans = 0;
+    memset(mq, -1, sizeof(mq)), memset(mp, -1, sizeof(mp));
+    for(int i = 0; i < n; ++i) {
+        vis.reset();
+        if(dfs(i)) ans += 1;
+    }
     return ans;
-}\end{code}
+}
+\end{code}
 \subsection{ArticulationPoints.h}
 \begin{code}
 vector<int> ArticulationPoints(const vector<vector<int>>& g) {
@@ -1034,7 +1042,8 @@ vector<int> ArticulationPoints(const vector<vector<int>>& g) {
         if(id[i] == -1) dfs(i, -1);
     }
     return cuts;
-}\end{code}
+}
+\end{code}
 \subsection{Bridges.h}
 \begin{code}
 vector<pii> findBridges(const vector<vector<int>>& g) {
@@ -1256,7 +1265,8 @@ struct DynamicKMP {
     int query() const { return p.back(); }
     vector<int> query_all() const { return p; }
     void reserve(int sz) { p.reserve(sz); dp.reserve(sz); }
-};\end{code}
+};
+\end{code}
 \subsection{Z.h}
 \begin{code}
 template<class T>
@@ -1305,7 +1315,8 @@ string SmallestRotation(string s) {
         j += (i == j);
     }
     return s.substr(i < n ? i : j, n);
-}\end{code}
+}
+\end{code}
 \subsection{SuffixArray.h}
 \begin{code}
 vector<int> sa_is(const vector<int>& s, int upper) {
@@ -1496,11 +1507,6 @@ ll ext_gcd(ll a, ll b, ll& x, ll& y) {
 \end{code}
 \subsection{InvGCD.h}
 \begin{code}
-// @param $1 \leq b$
-// @return ${g, x}$ s.t.
-//    $g = \gcd(a, b)$
-//    $ax = g \pmod{b}$
-//    $0 \leq x < \frac{b}{g}$
 pair<ll, ll> inv_gcd(ll a, ll b) {
     a %= b;
     if(a < 0) a += b;
@@ -1573,33 +1579,20 @@ template<int m, class T> modint<m> operator*(const T& lhs, const modint<m>& rhs)
 template<int m, class T> modint<m> operator/(const T& lhs, const modint<m>& rhs) {
     return modint<m>(lhs) /= rhs;
 }
-template<int m> istream& operator>>(istream& in, modint<m>& num) {
-    long long x; in >> x; num = modint<m>(x);
-    return in;
-}
-template<int m> ostream& operator<<(ostream& out, const modint<m>& num) {
-    return out << num();
-}\end{code}
+\end{code}
 \subsection{ModInverses.h}
 \begin{code}
-// @return array $A$ of length $N$ s.t
-//    $i \cdot A_i = 1 \pmod{m}$
 vector<int> mod_inverse(int m, int n = -1) {
     assert(n < m);
     if(n == -1) n = m - 1;
     vector<int> inv(n + 1);
     inv[0] = inv[1] = 1;
-    for(int i = 2; i <= n; ++i) {
-        inv[i] = m - 1LL * (m / i) * inv[m % i] % m;
-    }
+    for(int i = 2; i <= n; ++i) inv[i] = m - 1LL * (m / i) * inv[m % i] % m;
     return inv;
 }
 \end{code}
 \subsection{PowMod.h}
 \begin{code}
-// @param $0 \leq n$
-// @param $1 \leq m$
-// @return $x^n \pmod{m}$
 constexpr long long pow_mod_constexpr(long long x, long long n, int m) {
     if(m == 1) return 0;
     unsigned int _m = (unsigned int)(m);
@@ -1642,7 +1635,8 @@ int DiscreteLog(int x, int y, int m) {
     if(s == y) return 100;
     int p = 100 + DiscreteLog(s, x, y, m);
     return (pow_mod(x, p, m) != y ? -1 : p);
-}\end{code}
+}
+\end{code}
 \subsection{CRT.h}
 \begin{code}
 // @return
@@ -1719,9 +1713,7 @@ bool is_prime_ll(ull n) {
 \end{code}
 \subsection{PrimitiveRoot.h}
 \begin{code}
-// Compile time primitive root
-// @param $m$ must be prime
-// @return primitive root (and minimum in now)
+// $m$ must be prime. return minimum primitive root
 constexpr int primitive_root_constexpr(int m) {
     if(m == 2) return 1;
     if(m == 167772161) return 3;
@@ -2540,10 +2532,6 @@ template<class T> struct Point {
         return Point(dot(lhs, rhs), cross(lhs, rhs));
     }
 };
-template<class T>
-istream& operator>>(istream& in, Point<T>& p) {
-    return in >> p.x >> p.y;
-}
 \end{code}
 \subsection{LineSeg.h}
 \begin{code}
@@ -2573,7 +2561,8 @@ Point<T> intersect(const Point<T>& a, const Point<T>& b, const Point<T>& c, cons
     T a123 = cross(b - a, c - a);
     T a124 = cross(b - a, d - a);
     return (d * a123 - c * a124) / (a123 - a124);
-}\end{code}
+}
+\end{code}
 \subsection{ConvexHull.h}
 \begin{code}
 // @return the points of the convex hull in clock-wise order
@@ -2682,7 +2671,8 @@ int ternary_search(int l, int r) {
         else l = m;
     }
     return r;
-}\end{code}
+}
+\end{code}
 \subsection{Aliens.h}
 \begin{code}
 // find minimum
@@ -2695,7 +2685,8 @@ int Aliens(int l, int r, int k, const function<pii(int)>& f) {
         else l = m + 1;
     }
     return f(l).first - l * k;
-}\end{code}
+}
+\end{code}
 \subsection{Debug.h}
 \begin{code}
 #ifdef LOCAL

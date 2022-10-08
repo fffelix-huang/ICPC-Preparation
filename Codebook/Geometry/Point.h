@@ -59,7 +59,3 @@ template<class T> struct Point {
 		return Point(dot(lhs, rhs), cross(lhs, rhs));
 	}
 };
-template<class T>
-istream& operator>>(istream& in, Point<T>& p) {
-	return in >> p.x >> p.y;
-}
