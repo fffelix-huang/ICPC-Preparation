@@ -1,5 +1,6 @@
 Setup
 	Template.h
+	q.sh
 Data-Structure
 	HashMap.h
 	OrderStatisticTree.h
