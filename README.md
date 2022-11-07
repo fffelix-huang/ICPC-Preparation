@@ -1,7 +1,5 @@
 # ICPC-Preparation
 
-My competitive programming setups.
-
 ## :information_source: Steps to render codebook.pdf
 
 1. Add files/directories to be rendered in `includes.txt`. (Indentation isn't necessary)
