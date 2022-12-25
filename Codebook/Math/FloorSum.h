@@ -1,6 +1,6 @@
 // @param $n < 2^{32}$
 // @param $1 \leq m < 2^{32}$
-// @return sum_{i=0}^{n-1} \lfloor \frac{ai + b}{m} \rfloor \pmod{2^{64}}
+// @return $\sum_{i=0}^{n-1} \lfloor \frac{ai + b}{m} \rfloor \pmod{2^{64}}$
 ull floor_sum_unsigned(ull n, ull m, ull a, ull b) {
 	ull ans = 0;
 	while(true) {
