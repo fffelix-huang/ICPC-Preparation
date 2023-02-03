@@ -1,5 +1,5 @@
 int DiscreteLog(int s, int x, int y, int m) {
-	constexpr int K = 0;
+	constexpr int K = 32000;
 	hash_map<int, int> p;
 	int b = 1;
 	for(int i = 0; i < K; ++i) {
