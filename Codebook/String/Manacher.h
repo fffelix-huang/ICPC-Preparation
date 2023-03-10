@@ -1,18 +1,14 @@
-template<class T>
-vector<int> manacher_odd(const vector<T>& a) {
-	vector<T> b(1, -87);
-	b.insert(b.end(), ALL(a));
-	b.PB(-69);
-	int n = SZ(b);
-	vector<int> z(n);
-	z[0] = 1;
-	for(int i = 1, l = -1, r = 1; i <= n; ++i) {
-		if(i < r) z[i] = min(z[l + r - i], r - i);
-		while(b[i - z[i]] == b[i + z[i]]) z[i]++;
-		if(i + z[i] - 1 > r) {
-			l = i - z[i] + 1;
-			r = i + z[i] - 1;
-		}
+// Length: (z[i] - (i & 1)) / 2 * 2 + (i & 1)
+vi manacher(const string& tmp) {
+	string s = "&";
+	int l = 0, r = 0;
+	for(char c : tmp) s.PB(c), s.PB('%');
+	int n = sz(s);
+	vi z(n);
+	for(int i = 0; i < n; ++i) {
+		z[i] = r > i ? min(z[2 * l - i], r - i) : 1;
+		while(s[i + z[i]] == s[i - z[i]]) z[i] += 1;
+		if(z[i] + i > r) r = z[i] + i, l = i;
 	}
-	return vector<int>(1 + ALL(z) - 1);
+	return z;
 }

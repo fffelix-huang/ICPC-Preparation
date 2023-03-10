@@ -1,6 +1,6 @@
 template<class T> vector<int> KMP(const vector<T>& a) {
-	int n = SZ(a);
-	vector<int> k(n);
+	int n = sz(a);
+	vi k(n);
 	for(int i = 1; i < n; ++i) {
 		int j = k[i - 1];
 		while(j > 0 && a[i] != a[j]) j = k[j - 1];

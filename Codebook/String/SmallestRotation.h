@@ -1,5 +1,5 @@
 string SmallestRotation(string s) {
-	int n = SZ(s), i = 0, j = 1;
+	int n = sz(s), i = 0, j = 1;
 	s += s;
 	while(i < n && j < n) {
 		int k = 0;
